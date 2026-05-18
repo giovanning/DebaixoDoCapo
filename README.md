@@ -128,7 +128,7 @@ when {
 
 ## Licença
 
-Este projeto está licenciado sob a [MIT License](LICENSE) — sinta-se livre para usar, modificar e distribuir.
+Este projeto está licenciado sob a MIT License — sinta-se livre para usar, modificar e distribuir.
 
 ---
 

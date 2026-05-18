@@ -7,9 +7,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.projetos.filmei.debaixodocapo.ui.screen.AppScreen
+import com.projetos.filmei.debaixodocapo.ui.AppScreen
 import com.projetos.filmei.debaixodocapo.ui.theme.DebaixoDoCapoTheme
-import com.projetos.filmei.debaixodocapo.ui.viewmodel.AppViewModel
+import com.projetos.filmei.debaixodocapo.ui.AppViewModel
 
 class MainActivity : ComponentActivity() {
     private val viewModel: AppViewModel by viewModels {

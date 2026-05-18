@@ -1,4 +1,4 @@
-package com.projetos.filmei.debaixodocapo.ui.screen
+package com.projetos.filmei.debaixodocapo.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -43,11 +43,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.projetos.filmei.debaixodocapo.R
-import com.projetos.filmei.debaixodocapo.ui.viewmodel.AppListState
-import com.projetos.filmei.debaixodocapo.ui.viewmodel.AppViewModel
 import com.projetos.filmei.debaixodocapo.utils.AplicativoInstalado
 import com.projetos.filmei.debaixodocapo.utils.AppFramework
 import com.projetos.filmei.debaixodocapo.utils.DetalhesAppNativos
@@ -63,7 +62,7 @@ fun AppScreen(viewModel: AppViewModel) {
         topBar = {
             Column {
                 TopAppBar(
-                    title = { Text("Debaixo do Capô") },
+                    title = { Text(stringResource(R.string.app_name)) },
                     actions = {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
@@ -139,11 +138,11 @@ fun ResumoFrameworks(apps: List<AplicativoInstalado>) {
     val contagem = apps.groupingBy { it.framework }.eachCount()
     val total = apps.size
 
-    val nativeApps = apps.filter { it.framework == AppFramework.NATIVE }
-    val onlyXml = nativeApps.count { it.detalhesNativos?.hasXml == true && it.detalhesNativos.hasCompose }
-    val onlyCompose = nativeApps.count { it.detalhesNativos?.hasXml == false && it.detalhesNativos.hasCompose }
-    val both = nativeApps.count { it.detalhesNativos?.hasXml == true && it.detalhesNativos.hasCompose }
-    val stackNativaOculta = nativeApps.count { it.detalhesNativos?.hasCompose != true && it.detalhesNativos?.hasXml != true && it.detalhesNativos?.isKmp != true }
+    val appsNativos = apps.filter { it.framework == AppFramework.NATIVE }
+    val apenasXml = appsNativos.count { it.detalhesNativos?.hasXml == true && it.detalhesNativos.hasCompose }
+    val apenasCompose = appsNativos.count { it.detalhesNativos?.hasXml == false && it.detalhesNativos.hasCompose }
+    val hibrido = appsNativos.count { it.detalhesNativos?.hasXml == true && it.detalhesNativos.hasCompose }
+    val stackNativaOculta = appsNativos.count { it.detalhesNativos?.hasCompose != true && it.detalhesNativos?.hasXml != true && it.detalhesNativos?.isKmp != true }
 
     val frameworks = AppFramework.entries.toTypedArray()
 
@@ -201,9 +200,9 @@ fun ResumoFrameworks(apps: List<AplicativoInstalado>) {
                 modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                InfoRow(label = "Apenas XML", count = onlyXml, color = Color(0xFFE65100))
-                InfoRow(label = "Apenas Compose", count = onlyCompose, color = Color(0xFF2E7D32))
-                InfoRow(label = "Híbrido (XML + Compose)", count = both, color = Color(0xFF6A1B9A))
+                InfoRow(label = "Apenas XML", count = apenasXml, color = Color(0xFFE65100))
+                InfoRow(label = "Apenas Compose", count = apenasCompose, color = Color(0xFF2E7D32))
+                InfoRow(label = "Híbrido (XML + Compose)", count = hibrido, color = Color(0xFF6A1B9A))
                 InfoRow(label = "Stack Nativa Oculta", count = stackNativaOculta, color = Color(0xFFF5F5F5))
             }
         }
@@ -334,33 +333,33 @@ fun AppItemCard(app: AplicativoInstalado) {
 
             if (app.framework == AppFramework.NATIVE && app.detalhesNativos != null) {
                 Spacer(modifier = Modifier.height(12.dp))
-                NativeDetailsRow(detalhes = app.detalhesNativos)
+                DetalhesNativoRow(detalhes = app.detalhesNativos)
             }
         }
     }
 }
 
 @Composable
-fun NativeDetailsRow(detalhes: DetalhesAppNativos) {
+fun DetalhesNativoRow(detalhes: DetalhesAppNativos) {
     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         if (detalhes.hasCompose) {
-            SmallBadge(text = "Compose", backgroundColor = Color(0xFFE8EAF6), textColor = Color(0xFF3F51B5))
+            PequenaBadge(text = "Compose", backgroundColor = Color(0xFFE8EAF6), textColor = Color(0xFF3F51B5))
         }
         if (detalhes.hasXml) {
-            SmallBadge(text = "XML", backgroundColor = Color(0xFFFFF3E0), textColor = Color(0xFFE65100))
+            PequenaBadge(text = "XML", backgroundColor = Color(0xFFFFF3E0), textColor = Color(0xFFE65100))
         }
         if (detalhes.isKmp) {
-            SmallBadge(text = "KMP", backgroundColor = Color(0xFFF3E5F5), textColor = Color(0xFF6A1B9A))
+            PequenaBadge(text = "KMP", backgroundColor = Color(0xFFF3E5F5), textColor = Color(0xFF6A1B9A))
         }
 
         if (!detalhes.hasCompose && !detalhes.hasXml && !detalhes.isKmp) {
-            SmallBadge(text = "Stack Nativa Oculta", backgroundColor = Color(0xFFF5F5F5), textColor = Color(0xFF757575))
+            PequenaBadge(text = "Stack Nativa Oculta", backgroundColor = Color(0xFFF5F5F5), textColor = Color(0xFF757575))
         }
     }
 }
 
 @Composable
-fun SmallBadge(text: String, backgroundColor: Color, textColor: Color) {
+fun PequenaBadge(text: String, backgroundColor: Color, textColor: Color) {
     Box(
         modifier = Modifier
             .background(color = backgroundColor, shape = RoundedCornerShape(8.dp))

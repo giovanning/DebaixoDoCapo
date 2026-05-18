@@ -1,4 +1,4 @@
-package com.projetos.filmei.debaixodocapo.ui.viewmodel
+package com.projetos.filmei.debaixodocapo.ui
 
 import android.content.pm.PackageManager
 import androidx.lifecycle.ViewModel
@@ -34,12 +34,12 @@ class AppViewModel(packageManager: PackageManager) : ViewModel() {
         _isLoading,
         _errorMessage,
         _mostrarAppsPessoais
-    ) { apps, loading, error, showPersonal ->
+    ) { apps, loading, error, mostrarAppsPessoais ->
         when {
             error != null -> AppListState.Error(error)
             loading -> AppListState.Loading
             else -> {
-                val filteredApps = if (showPersonal) {
+                val filteredApps = if (mostrarAppsPessoais) {
                     apps
                 } else {
                     apps.filter { !it.nomePacote.startsWith("com.projetos.filmei") }

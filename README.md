@@ -20,12 +20,12 @@ O app inspeciona o APK de cada aplicativo instalado procurando por arquivos, bib
 
 | Stack | Indicadores verificados |
 |---|---|
-| 🐦 **Flutter** | `lib/libflutter.so`, `assets/flutter_assets/` |
-| ⚛️ **React Native** | `lib/libreactnativejni.so`, `assets/index.android.bundle` |
-| 🖼️ **XML (Views)** | `res/layout/` *(com ressalvas — veja abaixo)* |
-| 🎨 **Jetpack Compose** | Referências a `androidx.compose` nas classes |
-| 🌐 **Kotlin Multiplatform** | `shared.kotlin_module`, diretórios `kmp` ou `kotlin-multiplatform` |
-| 🤖 **Stack nativa oculta** | Nenhum dos indicadores acima encontrado |
+|  **Flutter** | `lib/libflutter.so`, `assets/flutter_assets/` |
+|  **React Native** | `lib/libreactnativejni.so`, `assets/index.android.bundle` |
+|  **XML (Views)** | `res/layout/` *(com ressalvas — veja abaixo)* |
+|  **Jetpack Compose** | Referências a `androidx.compose` nas classes |
+|  **Kotlin Multiplatform** | `shared.kotlin_module`, diretórios `kmp` ou `kotlin-multiplatform` |
+|  **Stack nativa oculta** | Nenhum dos indicadores acima encontrado |
 
 ###  Nota sobre `res/layout/`
 

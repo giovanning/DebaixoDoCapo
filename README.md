@@ -1,4 +1,4 @@
-# 📱 Debaixo do Capô
+# Debaixo do Capô
 
 > Identifica as tecnologias utilizadas nos aplicativos instalados no seu dispositivo Android.
 
@@ -10,7 +10,7 @@
 
 A motivação do projeto é educacional: entender como diferentes apps são construídos, quais stacks predominam no ecossistema Android e como é possível fazer essa inferência a partir dos artefatos gerados no processo de build.
 
-> ⚠️ A detecção é baseada em heurísticas e **não garante 100% de precisão**. A presença de certas pastas ou arquivos indica *fortemente* o uso de uma tecnologia, mas não é definitiva — por exemplo, um projeto full Compose ainda pode conter a pasta `res/layout/` para drawables ou outros recursos.
+>  A detecção é baseada em heurísticas e **não garante 100% de precisão**. A presença de certas pastas ou arquivos indica *fortemente* o uso de uma tecnologia, mas não é definitiva — por exemplo, um projeto full Compose ainda pode conter a pasta `res/layout/` para drawables ou outros recursos.
 
 ---
 
@@ -27,7 +27,7 @@ O app inspeciona o APK de cada aplicativo instalado procurando por arquivos, bib
 | 🌐 **Kotlin Multiplatform** | `shared.kotlin_module`, diretórios `kmp` ou `kotlin-multiplatform` |
 | 🤖 **Stack nativa oculta** | Nenhum dos indicadores acima encontrado |
 
-### ⚠️ Nota sobre `res/layout/`
+###  Nota sobre `res/layout/`
 
 A presença da pasta `res/layout/` **não significa necessariamente** que o app usa XML para suas telas. Projetos construídos inteiramente com Jetpack Compose ainda podem conter essa pasta para hospedar drawables, layouts de widgets, notificações ou recursos de bibliotecas de terceiros. O app tenta cruzar esse dado com outros indicadores para dar um resultado mais preciso.
 
@@ -113,7 +113,7 @@ when {
 }
 ```
  
-> 💡 **Esse código é completamente opcional.** Se você fez um fork e não precisa desse comportamento, pode remover com segurança o bloco `filter`, o estado `mostrarAppsPessoais` e o switch correspondente na `HomeScreen`. O app continuará funcionando normalmente, exibindo todos os aplicativos instalados sem nenhuma exceção.
+>  **Esse código é completamente opcional.** Se você fez um fork e não precisa desse comportamento, pode remover com segurança o bloco `filter`, o estado `mostrarAppsPessoais` e o switch correspondente na `HomeScreen`. O app continuará funcionando normalmente, exibindo todos os aplicativos instalados sem nenhuma exceção.
  
 ---
 
@@ -135,4 +135,4 @@ Este projeto está licenciado sob a MIT License — sinta-se livre para usar, mo
 ## Autor
 
 Feito com ☕ e Kotlin.  
-Contribuições, estrelinhas e feedbacks são sempre bem-vindos! 🌟
+Contribuições, estrelinhas e feedbacks são sempre bem-vindos!

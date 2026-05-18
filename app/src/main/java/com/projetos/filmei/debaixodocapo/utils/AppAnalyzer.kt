@@ -64,8 +64,6 @@ class AppAnalyzer(private val packageManager: PackageManager) {
 
                 var hasReactNative = false
                 var hasFlutter = false
-                var hasCordova = false
-                var hasXamarin = false
 
                 var hasXml = false
                 var hasCompose = false
